@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.springboot.dao.XitongshuomingMapper">
+  <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Xitongshuoming">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="biaoti" jdbcType="VARCHAR" property="biaoti" />
+    <result column="mokuai" jdbcType="VARCHAR" property="mokuai" />
+    <result column="neirong" jdbcType="VARCHAR" property="neirong" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, biaoti, mokuai, neirong
+  </sql>
+  <select id="selectByExample" parameterType="org.spring.springboot.domain.XitongshuomingExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_xitongshuoming
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_xitongshuoming
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_xitongshuoming
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.spring.springboot.domain.XitongshuomingExample">
+    delete from t_xitongshuoming
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.spring.springboot.domain.Xitongshuoming">
+    insert into t_xitongshuoming (id, biaoti, mokuai, 
+      neirong)
+    values (#{id,jdbcType=INTEGER}, #{biaoti,jdbcType=VARCHAR}, #{mokuai,jdbcType=VARCHAR}, 
+      #{neirong,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Xitongshuoming">
+    insert into t_xitongshuoming
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="biaoti != null">
+        biaoti,
+      </if>
+      <if test="mokuai != null">
+        mokuai,
+      </if>
+      <if test="neirong != null">
+        neirong,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="biaoti != null">
+        #{biaoti,jdbcType=VARCHAR},
+      </if>
+      <if test="mokuai != null">
+        #{mokuai,jdbcType=VARCHAR},
+      </if>
+      <if test="neirong != null">
+        #{neirong,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.spring.springboot.domain.XitongshuomingExample" resultType="java.lang.Long">
+    select count(*) from t_xitongshuoming
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_xitongshuoming
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.biaoti != null">
+        biaoti = #{record.biaoti,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mokuai != null">
+        mokuai = #{record.mokuai,jdbcType=VARCHAR},
+      </if>
+      <if test="record.neirong != null">
+        neirong = #{record.neirong,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_xitongshuoming
+    set id = #{record.id,jdbcType=INTEGER},
+      biaoti = #{record.biaoti,jdbcType=VARCHAR},
+      mokuai = #{record.mokuai,jdbcType=VARCHAR},
+      neirong = #{record.neirong,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Xitongshuoming">
+    update t_xitongshuoming
+    <set>
+      <if test="biaoti != null">
+        biaoti = #{biaoti,jdbcType=VARCHAR},
+      </if>
+      <if test="mokuai != null">
+        mokuai = #{mokuai,jdbcType=VARCHAR},
+      </if>
+      <if test="neirong != null">
+        neirong = #{neirong,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Xitongshuoming">
+    update t_xitongshuoming
+    set biaoti = #{biaoti,jdbcType=VARCHAR},
+      mokuai = #{mokuai,jdbcType=VARCHAR},
+      neirong = #{neirong,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

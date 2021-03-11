@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!--数据库驱动 -->
+	<classPathEntry location="mysql-connector-java-5.0.4-bin.jar" />
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!--数据库链接地址账号密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost/aixinchongwujz" userId="root"
+			password="root">
+		</jdbcConnection>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!--生成Model类存放位置 -->
+		<javaModelGenerator targetPackage="org.spring.springboot.domain"
+			targetProject="../src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!--生成映射文件存放位置 -->
+		<sqlMapGenerator targetPackage="mapper"
+			targetProject="../src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!--生成Dao类存放位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="org.spring.springboot.dao" targetProject="../src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+<table tableName="t_admin" domainObjectName="Admin"></table><table tableName="t_yonghu" domainObjectName="Yonghu"></table><table tableName="t_liulangchongwu" domainObjectName="Liulangchongwu"></table><table tableName="t_leibie" domainObjectName="Leibie"></table><table tableName="t_lingyang" domainObjectName="Lingyang"></table><table tableName="t_liulangchongwupinglun" domainObjectName="Liulangchongwupinglun"></table><table tableName="t_chongwuzixun" domainObjectName="Chongwuzixun"></table><table tableName="t_xitongshuoming" domainObjectName="Xitongshuoming"></table><table tableName="t_dongtai" domainObjectName="Dongtai"></table><table tableName="t_dongtaipinglun" domainObjectName="Dongtaipinglun"></table>	</context>
+</generatorConfiguration>
+
